@@ -1,0 +1,76 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    margin: 20px 64px;
+    /* gap: 268px; */
+}
+
+.navBlock {
+    display: flex;
+    align-items: center;
+    gap: 390px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 20px;
+
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #121417;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.navLink {
+    color: #121417;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.authBlock {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    font-weight: 700;
+    font-size: 16px;
+    
+    line-height: 1.25;
+    color: #121417;
+}
+
+.loginBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.registerBtn {
+    background: #121417;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 39px;
+    cursor: pointer;
+    font: inherit;
+
+    color: #fff;
+}
