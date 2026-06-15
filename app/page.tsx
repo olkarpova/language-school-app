@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from './page.module.css';
+import Link from 'next/link';
 
 const stats = [
   { value: '32,000 +', label: 'Experienced tutors' },
@@ -22,9 +23,9 @@ export default function Home() {
             language proficiency to new heights by connecting with highly qualified and experienced
             tutors.
           </p>
-          <button type="button" className={styles.getStarted}>
+          <Link type="button" href="/teachers" className={styles.getStarted}>
             Get started
-          </button>
+          </Link>
         </div>
         <div className={styles.imageCard}>
           <Image src="/home-memoji.png" alt="Language tutor" width={391} height={578} priority />
