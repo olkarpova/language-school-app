@@ -13,6 +13,8 @@ const firebaseConfig = {
 };
 
 // захист від повторної ініціалізації (Next.js перезапускає код у dev)
+//якщо додаток Firebase уже існує — взяти наявний (getApp()); 
+// інакше — створити новий (initializeApp(firebaseConfig))
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
@@ -20,3 +22,5 @@ export async function getTeachers(): Promise<Teacher[]> {
   const snapshot = await get(ref(db, "teachers"));
   return snapshot.exists() ? snapshot.val() : [];
 }
+//у Firebase результат запиту — це не самі дані, а snapshot, 
+// з якого дані ще треба «дістати» через .val()
