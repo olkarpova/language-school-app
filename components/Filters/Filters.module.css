@@ -1,0 +1,40 @@
+.filters {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 20px;
+    max-width: 1184px;
+    margin: 0 auto 32px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    color: #8a8a89;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.select {
+    appearance: none;
+        -webkit-appearance: none;
+        padding: 16px 48px 16px 18px;
+        /* справа 48px — місце під стрілку */
+        background-color: #fff;
+        background-image: url("/chevron.svg");
+        background-repeat: no-repeat;
+        background-position: right 18px center;
+        /* стрілка справа */
+        border: none;
+        border-radius: 14px;
+        font-weight: 500;
+        font-size: 18px;
+        color: #121417;
+        cursor: pointer;
+        outline: none;
+}

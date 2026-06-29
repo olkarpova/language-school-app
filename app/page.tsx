@@ -23,7 +23,7 @@ export default function Home() {
             language proficiency to new heights by connecting with highly qualified and experienced
             tutors.
           </p>
-          <Link type="button" href="/teachers" className={styles.getStarted}>
+          <Link href="/teachers" className={styles.getStarted}>
             Get started
           </Link>
         </div>
