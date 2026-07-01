@@ -11,6 +11,7 @@ import { Teacher } from '@/types/teacher';
 import TeacherCard from '@/components/TeacherCard/TeacherCard';
 import styles from './page.module.css';
 import Filters from '@/components/Filters/Filters';
+import Modal from '@/components/Modal/Modal';
 
 const PER_PAGE = 4;
 
@@ -23,6 +24,7 @@ export default function TeachersPage() {
   const [language, setLanguage] = useState("");
   const [level, setLevel] = useState("");
   const [price, setPrice] = useState("");
+  const [isTestOpen, setIsTestOpen] = useState(false);
 
   useEffect(() => {
     getTeachers()
@@ -69,6 +71,7 @@ export default function TeachersPage() {
         onLevelChange={(value) => { setLevel(value); setVisible(PER_PAGE); }}
         onPriceChange={(value) => { setPrice(value); setVisible(PER_PAGE); }}
       />
+      
       {filtered.length === 0 ? (
         <p>No teachers found for selected filters.</p>
       ) : (

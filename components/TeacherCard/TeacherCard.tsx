@@ -5,12 +5,15 @@ import { Teacher } from '@/types/teacher';
 import Image from 'next/image';
 import styles from './TeacherCard.module.css';
 import Icon from '../Icon/Icon';
+import Modal from '../Modal/Modal';
+import BookTrialForm from '../BookTrialForm/BookTrialForm';
 
 interface TeacherCardProps {
   teacher: Teacher;
 }
 export default function TeacherCard({ teacher }: TeacherCardProps) {
   const [showMore, setShowMore] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <article className={styles.card}>
@@ -28,9 +31,14 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
         <div className={styles.topRow}>
           <span className={styles.label}>Languages</span>
           <ul className={styles.stats}>
-            <li><Icon name="icon-book" width={16} height={16} />Lessons online</li>
+            <li>
+              <Icon name="icon-book" width={16} height={16} />
+              Lessons online
+            </li>
             <li>Lessons done: {teacher.lessons_done}</li>
-            <li><Icon name="icon-star" width={16} height={16} /> Rating: {teacher.rating}</li>
+            <li>
+              <Icon name="icon-star" width={16} height={16} /> Rating: {teacher.rating}
+            </li>
             <li>
               Price / 1 hour: <span className={styles.price}>{teacher.price_per_hour}$</span>
             </li>
@@ -69,7 +77,10 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
                     <div className={styles.reviewerAvatar}>{review.reviewer_name.charAt(0)}</div>
                     <div>
                       <p className={styles.reviewerName}>{review.reviewer_name}</p>
-                      <p className={styles.reviewRating}><Icon name="icon-star" width={16} height={16} /> {review.reviewer_rating.toFixed(1)}</p>
+                      <p className={styles.reviewRating}>
+                        <Icon name="icon-star" width={16} height={16} />{' '}
+                        {review.reviewer_rating.toFixed(1)}
+                      </p>
                     </div>
                   </div>
                   <p className={styles.reviewComment}>{review.comment}</p>
@@ -86,7 +97,21 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
           ))}
         </ul>
 
-        {showMore && <button className={styles.bookBtn}>Book trial lesson</button>}
+        {showMore && (
+          <button className={styles.bookBtn} onClick={() => setIsModalOpen(true)}>
+            Book trial lesson
+          </button>
+        )}
+
+        {isModalOpen && (
+          <Modal onClose={() => setIsModalOpen(false)}>
+            <BookTrialForm
+              teacherName={`${teacher.name} ${teacher.surname}`}
+              teacherAvatar={teacher.avatar_url}
+              onClose={()=> {setIsModalOpen(false)}}
+            />
+          </Modal>
+        )}
       </div>
     </article>
   );
