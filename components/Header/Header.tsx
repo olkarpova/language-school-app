@@ -6,10 +6,12 @@ import Image from "next/image";
 import Modal from "../Modal/Modal";
 import RegisterForm from "../RegisterForm/RegisterForm";
 import { useState } from "react";
+import LoginForm from "../LoginForm/LoginForm";
 
 const Header = () => {
 
     const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
 
     return (
         <header className={styles.header} >
@@ -26,8 +28,11 @@ const Header = () => {
 
             <div className={styles.authBlock}>
                 
-                <button type="button" className={styles.loginBtn}>
-                    <Image src="/login.svg" alt="LogIn" width={20} height={20} />
+                <button
+                    type="button"
+                    className={styles.loginBtn}
+                    onClick={() => setIsLoginOpen(true)}>
+                    <Image src="/login.svg" alt="LogIn" width={20} height={20}/>
                     Log in
                 </button>
                 <button
@@ -42,7 +47,12 @@ const Header = () => {
                 <Modal onClose={() => setIsRegisterOpen(false)}>
                     <RegisterForm onClose={()=> setIsRegisterOpen(false)}/>
                 </Modal>
-        )}
+                )}
+            {isLoginOpen && (
+                <Modal onClose={() => setIsLoginOpen(false)}>
+                    <LoginForm onClose={() => setIsLoginOpen(false)}/>
+                </Modal>
+            )}
         </header>
     );  
 }
