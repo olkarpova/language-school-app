@@ -25,7 +25,8 @@ const firebaseConfig = {
 // інакше — створити новий (initializeApp(firebaseConfig))
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const db = getDatabase(app);
-export const auth = getAuth(app); // інструмент для роботи з користувачами саме цього проєкту
+export const auth = getAuth(app); // інструмент для роботи з 
+// користувачами саме цього проєкту
 // auth — це «представник» авторизації проєкту в коді
 
 export async function getTeachers(): Promise<Teacher[]> {

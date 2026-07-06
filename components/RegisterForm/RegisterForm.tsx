@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { registerUser } from "@/lib/firebase";
 import css from "./RegisterForm.module.css";
+import { useAuth } from "../AuthProvider/AuthProvider";
 
 interface RegisterFormData {
   name: string;
@@ -29,6 +30,7 @@ interface RegisterFormProps {
 }
 
 export default function RegisterForm({ onClose }: RegisterFormProps) {
+    const { refreshUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -40,7 +42,8 @@ export default function RegisterForm({ onClose }: RegisterFormProps) {
 
   const onSubmit = async (data: RegisterFormData) => {
     try {
-      await registerUser(data.name, data.email, data.password);
+        await registerUser(data.name, data.email, data.password);
+        await refreshUser();
       reset();
       onClose();
     } catch (error) {
