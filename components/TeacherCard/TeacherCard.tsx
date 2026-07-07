@@ -7,6 +7,8 @@ import styles from './TeacherCard.module.css';
 import Icon from '../Icon/Icon';
 import Modal from '../Modal/Modal';
 import BookTrialForm from '../BookTrialForm/BookTrialForm';
+import { useFavorites } from '@/components/FavoritesProvider/FavoritesProvider';
+import { useAuth } from '../AuthProvider/AuthProvider';
 
 interface TeacherCardProps {
   teacher: Teacher;
@@ -14,6 +16,18 @@ interface TeacherCardProps {
 export default function TeacherCard({ teacher }: TeacherCardProps) {
   const [showMore, setShowMore] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { user } = useAuth();
+  const { isFavorite, toggleFavorite } = useFavorites();
+
+  const teacherId = `${teacher.name} ${teacher.surname}`;
+
+  const handleFavoriteClick = () => {
+  if (!user) {
+    alert("This feature is available only for authorized users.");
+    return;
+  }
+  toggleFavorite(teacherId);
+};
 
   return (
     <article className={styles.card}>
@@ -43,8 +57,17 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
               Price / 1 hour: <span className={styles.price}>{teacher.price_per_hour}$</span>
             </li>
           </ul>
-          <button className={styles.favBtn} aria-label="Add to favorites">
-            <Icon name="icon-heart" width={26} height={26} />
+          <button
+            className={styles.favBtn}
+            aria-label="Add to favorites"
+            onClick={handleFavoriteClick}
+          >
+            <Icon
+              name="icon-heart"
+              width={26}
+              height={26}
+              className={user && isFavorite(teacherId) ? styles.favActive : ""}
+            />
           </button>
         </div>
         <h2 className={styles.name}>
@@ -108,7 +131,9 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
             <BookTrialForm
               teacherName={`${teacher.name} ${teacher.surname}`}
               teacherAvatar={teacher.avatar_url}
-              onClose={()=> {setIsModalOpen(false)}}
+              onClose={() => {
+                setIsModalOpen(false);
+              }}
             />
           </Modal>
         )}

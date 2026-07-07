@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header/Header';
 import { AuthProvider } from '@/components/AuthProvider/AuthProvider';
+import { FavoritesProvider } from '@/components/FavoritesProvider/FavoritesProvider';
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -25,13 +26,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.variable}>
         <AuthProvider>
-          <Header />
-          <main>{children}</main>
-          <footer>
-            <p>
-              Created <time dateTime="2026">2026</time>
-            </p>
-          </footer>
+          <FavoritesProvider>
+            <Header />
+            <main>{children}</main>
+            <footer>
+              <p>
+                Created <time dateTime="2026">2026</time>
+              </p>
+            </footer>
+          </FavoritesProvider>
         </AuthProvider>
       </body>
     </html>

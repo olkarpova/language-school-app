@@ -12,9 +12,9 @@ import { logoutUser } from '@/lib/firebase';
 
 const Header = () => {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-    const [isLoginOpen, setIsLoginOpen] = useState(false);
-    
-    const { user } = useAuth();
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const { user } = useAuth();
 
   return (
     <header className={styles.header}>
@@ -30,6 +30,11 @@ const Header = () => {
           <Link href="/teachers" className={styles.navLink}>
             Teachers
           </Link>
+          {user && (
+            <Link href="/favorites" className={styles.navLink}>
+              Favorites
+            </Link>
+          )}
         </nav>
       </div>
 
