@@ -46,7 +46,7 @@ export default function FavoritesPage() {
   return (
     <section className={styles.page}>
       {favoriteTeachers.length === 0 ? (
-        <p>You have no favorite teachers yet.</p>
+        <p className={styles.emptyMessage}>You have no favorite teachers yet.</p>
       ) : (
         <ul className={styles.list}>
           {favoriteTeachers.map((teacher) => (

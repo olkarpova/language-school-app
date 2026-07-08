@@ -113,3 +113,12 @@
   letter-spacing: -0.02em;
   color: rgba(18, 20, 23, 0.7);
 }
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  width: 100%;
+  margin: 20px auto 0;
+  padding: 10px 128px;
+}

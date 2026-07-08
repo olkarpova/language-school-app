@@ -20,3 +20,10 @@
     color: #121417;
     cursor: pointer;
 }
+
+.emptyMessage {
+    text-align: center;
+    font-size: 18px;
+    color: #121417;
+    padding: 60px 0;
+}

@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header/Header';
 import { AuthProvider } from '@/components/AuthProvider/AuthProvider';
 import { FavoritesProvider } from '@/components/FavoritesProvider/FavoritesProvider';
+import styles from './page.module.css';
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -29,7 +30,7 @@ export default function RootLayout({
           <FavoritesProvider>
             <Header />
             <main>{children}</main>
-            <footer>
+            <footer className={styles.footer}>
               <p>
                 Created <time dateTime="2026">2026</time>
               </p>

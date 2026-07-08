@@ -11,7 +11,6 @@ import { Teacher } from '@/types/teacher';
 import TeacherCard from '@/components/TeacherCard/TeacherCard';
 import styles from './page.module.css';
 import Filters from '@/components/Filters/Filters';
-import Modal from '@/components/Modal/Modal';
 
 const PER_PAGE = 4;
 
