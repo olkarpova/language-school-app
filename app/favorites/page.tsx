@@ -31,7 +31,7 @@ export default function FavoritesPage() {
   if (!user) {
     return (
       <section className={styles.page}>
-        <p>This page is available only for authorized users. Please log in.</p>
+        <p className={styles.emptyMessage}>This page is available only for authorized users. Please log in.</p>
       </section>
     );
   }
