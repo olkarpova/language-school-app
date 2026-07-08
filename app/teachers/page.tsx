@@ -1,8 +1,7 @@
 'use client';
 // сторінка Teachers має бути клієнтською, тому й дані тягнемо на клієнті
-// чому ця сторінка клієнтська
 // Firebase client SDK працює в браузері.
-// Та функція getDatabase/get, яку ми використали, розрахована на клієнт
+// Функція getDatabase/get, яку ми використали, розрахована на клієнт
 // Сторінка Teachers має бути інтерактивною
 
 import { useEffect, useState } from 'react';
@@ -11,6 +10,8 @@ import { Teacher } from '@/types/teacher';
 import TeacherCard from '@/components/TeacherCard/TeacherCard';
 import styles from './page.module.css';
 import Filters from '@/components/Filters/Filters';
+import Loader from '@/components/Loader/Loader';
+
 
 const PER_PAGE = 4;
 
@@ -23,19 +24,17 @@ export default function TeachersPage() {
   const [language, setLanguage] = useState("");
   const [level, setLevel] = useState("");
   const [price, setPrice] = useState("");
-  const [isTestOpen, setIsTestOpen] = useState(false);
 
   useEffect(() => {
     getTeachers()
       .then(data => {
         setTeachers(data);
-        console.log('teachers', data);
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader/>;
   if (error) return <p>Something went wrong. Please try again.</p>;
 
   // збираємо унікальні варіанти для випадайок з даних

@@ -7,6 +7,7 @@ import TeacherCard from "@/components/TeacherCard/TeacherCard";
 import { useFavorites } from "@/components/FavoritesProvider/FavoritesProvider";
 import { useAuth } from "@/components/AuthProvider/AuthProvider";
 import styles from "../teachers/page.module.css";
+import Loader from "@/components/Loader/Loader";
 
 export default function FavoritesPage() {
   const { user, loading: authLoading } = useAuth();
@@ -24,7 +25,7 @@ export default function FavoritesPage() {
   }, []);
 
   // поки перевіряємо авторизацію — нічого не показуємо
-  if (authLoading) return <p>Loading...</p>;
+  if (authLoading) return <Loader/>;
 
   // захист: не залогінений — не пускаємо
   if (!user) {
@@ -35,7 +36,7 @@ export default function FavoritesPage() {
     );
   }
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader/>;
   if (error) return <p>Something went wrong. Please try again.</p>;
 
   // лишаємо тільки викладачів, що є в обраному
