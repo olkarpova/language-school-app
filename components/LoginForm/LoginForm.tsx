@@ -41,8 +41,7 @@ export default function LoginForm({ onClose }: LoginFormProps) {
       await loginUser(data.email, data.password);
       reset();
       onClose();
-    } catch (error) {
-      console.error(error);
+    } catch {
       alert("Login failed. Please check your email and password.");
     }
   };

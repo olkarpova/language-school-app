@@ -46,8 +46,7 @@ export default function RegisterForm({ onClose }: RegisterFormProps) {
         await refreshUser();
       reset();
       onClose();
-    } catch (error) {
-      console.error(error);
+    } catch {
       alert("Registration failed. This email may already be in use.");
     }
   };

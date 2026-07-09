@@ -36,8 +36,7 @@ export default function BookTrialForm({ teacherName, teacherAvatar, onClose }: B
     resolver: yupResolver(schema),
   });
 
-    const onSubmit = (data: BookTrialFormData) => {
-        console.log(data);
+    const onSubmit = () => {
         alert("Thank you! We will contact you soon.");
       reset();
       onClose();
